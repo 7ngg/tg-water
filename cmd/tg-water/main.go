@@ -5,6 +5,8 @@ import (
 	"os"
 
 	"github.com/7ngg/tg-water/internal/config"
+	"github.com/7ngg/tg-water/internal/lib/logger"
+	"github.com/7ngg/tg-water/internal/storage/sqlite"
 )
 
 func main() {
@@ -15,7 +17,11 @@ func main() {
 	log.Info("starting server", slog.String("env", cfg.Env))
 	log.Debug("debug messages are enabled")
 
-	// TODO: init storage: sqlite
+	_, err := sqlite.NewConnection(cfg.Storage.Path)
+	if err != nil {
+		log.Error("failed to init storage", logger.Err(err))
+		os.Exit(1)
+	}
 
 	// TODO: init router: chi, "chi router"
 

@@ -1,5 +1,7 @@
 env: "local"
-storage_path: "./storage/storage.db"
+storage:
+  path: "sql/storage.db"
+  migrations: "sql/migrations"
 http_server:
   address: "localhost:8080"
   timeout: 4s
