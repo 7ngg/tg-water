@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"log"
 
-	"github.com/7ngg/tg-water/internal/config"
+	"github.com/7ngg/trackly/internal/config"
 	"github.com/pressly/goose/v3"
 
 	_ "github.com/mattn/go-sqlite3"

@@ -1,9 +1,13 @@
-module github.com/7ngg/tg-water
+module github.com/7ngg/trackly
 
 go 1.24.1
 
 require (
 	github.com/BurntSushi/toml v1.5.0 // indirect
+	github.com/ajg/form v1.5.1 // indirect
+	github.com/go-chi/chi/v5 v5.2.1 // indirect
+	github.com/go-chi/render v1.0.3 // indirect
+	github.com/go-telegram/bot v1.15.0 // indirect
 	github.com/ilyakaznacheev/cleanenv v1.5.0 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/mattn/go-sqlite3 v1.14.28 // indirect

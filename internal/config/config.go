@@ -9,7 +9,8 @@ import (
 )
 
 type Config struct {
-	Env        string     `yaml:"env" end-default:"local"`
+	Env        string     `yaml:"env" env-default:"local"`
+	BotToken   string     `yaml:"bot_token" env-required:"true"`
 	Storage    Storage    `yaml:"storage"`
 	HTTPServer HTTPServer `yaml:"http_server"`
 }

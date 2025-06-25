@@ -19,6 +19,18 @@ func (q *Queries) DeleteUser(ctx context.Context, telegramID int64) error {
 	return err
 }
 
+const getByTgID = `-- name: GetByTgID :one
+SELECT telegram_id, chat_id FROM user
+WHERE user.telegram_id=?
+`
+
+func (q *Queries) GetByTgID(ctx context.Context, telegramID int64) (User, error) {
+	row := q.db.QueryRowContext(ctx, getByTgID, telegramID)
+	var i User
+	err := row.Scan(&i.TelegramID, &i.ChatID)
+	return i, err
+}
+
 const listUsers = `-- name: ListUsers :many
 SELECT telegram_id, chat_id FROM user
 `

@@ -8,7 +8,7 @@ import (
 )
 
 type Storage struct {
-	db *Queries
+	DB *Queries
 }
 
 func NewConnection(storagePath string) (*Storage, error) {
@@ -21,5 +21,5 @@ func NewConnection(storagePath string) (*Storage, error) {
 
 	db := New(connection)
 
-	return &Storage{db: db}, nil
+	return &Storage{DB: db}, nil
 }
