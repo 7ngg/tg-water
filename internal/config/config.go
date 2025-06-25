@@ -10,9 +10,9 @@ import (
 
 type Config struct {
 	Env        string     `yaml:"env" env-default:"local"`
-	BotToken   string     `yaml:"bot_token" env-required:"true"`
 	Storage    Storage    `yaml:"storage"`
 	HTTPServer HTTPServer `yaml:"http_server"`
+	BotToken   string
 }
 
 type Storage struct {
@@ -32,6 +32,11 @@ func MustLoad() *Config {
 		log.Fatal("CONFIG_PATH is not set")
 	}
 
+	botToken := os.Getenv("BOT_TOKEN")
+	if botToken == "" {
+		log.Fatal("BOT_TOKEN is not set")
+	}
+
 	if _, err := os.Stat(configPath); err != nil {
 		log.Fatalf("config file does not exist: %s", err)
 	}
@@ -40,6 +45,7 @@ func MustLoad() *Config {
 	if err := cleanenv.ReadConfig(configPath, &cfg); err != nil {
 		log.Fatalf("cannot read config: %s", err)
 	}
+	cfg.BotToken = botToken
 
 	return &cfg
 }
